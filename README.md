@@ -23,7 +23,7 @@ e.g.
 ```
 
 Tested with:
-* Firefox 46.0.1 (newer version may not work)
+* Firefox 46.0.1 (newer versions may not work)
 * Ubuntu 16.04
 
 ## License
