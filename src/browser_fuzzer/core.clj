@@ -33,7 +33,7 @@
       (do
         (a/onto-chan pass-chan pass-seq)
         #_(a/put! pass-chan :close)
-        (dotimes [n 10] 
+        (dotimes [n 5] 
           (let [driver (t/new-driver {:browser :firefox})]
             (thread
              (loop []
@@ -43,8 +43,10 @@
                    (do
                      (t/to driver site)
                      (t/wait-until driver #(t/exists? % user-field) 5000 0)
-                     (t/input-text driver (t/find-element driver user-field) username)
-                     (t/input-text driver (t/find-element driver pass-field) next-pass)
+                     (t/clear driver user-field)
+                     (t/input-text driver user-field username)
+                     (t/clear driver pass-field)
+                     (t/input-text driver pass-field next-pass)
                      #_(println "Thread " n " pass: " next-pass)
                      (t/click driver submit-field)
                      (timeout 500)
